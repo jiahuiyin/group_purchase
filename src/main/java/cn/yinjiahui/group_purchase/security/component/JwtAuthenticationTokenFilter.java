@@ -4,6 +4,7 @@ package cn.yinjiahui.group_purchase.security.component;
 import cn.yinjiahui.group_purchase.security.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -23,7 +24,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    // @Value("${jwt.tokenHeader}")
+    @Value("${jwt.tokenHeader}")
     private String tokenHeader;
 
     @Override
