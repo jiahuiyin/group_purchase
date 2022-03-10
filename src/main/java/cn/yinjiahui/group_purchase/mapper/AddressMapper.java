@@ -1,6 +1,6 @@
 package cn.yinjiahui.group_purchase.mapper;
 
-import cn.yinjiahui.group_purchase.po.Goods;
+import cn.yinjiahui.group_purchase.po.Address;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 @Mapper
-public interface GoodsMapper extends BaseMapper<Goods> {
+public interface AddressMapper extends BaseMapper<Address> {
 
-    @Select("select * from goods where title like #{keyWord}")
-    List<Goods> selectGoodsByTitleLike(String keyword);
+    @Select("select * from address")
+    List<Address> getAll();
 }
