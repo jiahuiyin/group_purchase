@@ -2,7 +2,6 @@ package cn.yinjiahui.group_purchase.controller;
 
 import cn.yinjiahui.group_purchase.common.Result;
 import cn.yinjiahui.group_purchase.po.Goods;
-import cn.yinjiahui.group_purchase.service.ClassifyService;
 import cn.yinjiahui.group_purchase.service.GoodsService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,6 @@ public class GoodsController {
     @Autowired
     GoodsService goodsService;
 
-    @Autowired
-    ClassifyService classifyService;
-
     /**
      * 通过商品id list得到系列商品
      *
@@ -36,67 +32,47 @@ public class GoodsController {
         return Result.success(goods);
     }
 
-    /***
-     * 通过ID得到某个商品
-     * @param goodsId 商品id
-     * @return 商品信息 以及 图片
+
+    /**
+     * 通过商家得到商品
+     *
+     * @param merchantId 分类
+     * @return 商品列表
      */
-    @PostMapping("/mget_goods_by_id")
-    public Result mGetOneGoods(@RequestParam Integer goodsId) {
-        Goods g = goodsService.mGetGoodsById(goodsId);
-        return Result.success(g);
+    @PostMapping("/mget_goods_by_merchant")
+    public Result mGetGoodsByMerchant(@RequestParam Integer merchantId) {
+        List<Goods> goods = goodsService.mGetGoodsByMerchant(merchantId);
+        return Result.success(goods);
     }
 
     /**
      * 通过分类得到商品
      *
-     * @param classify 分类
+     * @param categoryId 分类
      * @return 商品列表
      */
-    @PostMapping("/mget_goods_by_classify")
-    public Result mGetGoodsByClassify(@RequestParam String classify) {
-        List<Integer> l = classifyService.mGet_GoodsId_inClassify(classify);
-        List<Goods> goods = goodsService.mGetGoods(l);
+    @PostMapping("/mget_goods_by_category")
+    public Result mGetGoodsByClassify(@RequestParam Integer categoryId) {
+        List<Goods> goods = goodsService.mGetGoodsByCategory(categoryId);
         return Result.success(goods);
     }
+
 
     /**
      * 添加商品
      *
-     * @param tittle 标题列表
-     * @param num    商品数量列表
-     * @param price  价格列表
      * @return 结果
      */
-    @PostMapping("/minsert_goods")
-    public Result mGetGoodsByClassify(@RequestParam String[] tittle,
-                                      @RequestParam Integer[] num,
-                                      @RequestParam float[] price) {
+    @PostMapping("/save_goods")
+    public Result saveGoods(@RequestParam Goods goods) {
         try {
-            goodsService.mInsertNewGoods(tittle, num, price);
+            goodsService.saveGoods(goods);
             return Result.success("添加成功！");
         } catch (Exception e) {
             return Result.fail(e.toString());
         }
     }
 
-    /**
-     * 添加商品分类
-     *
-     * @param classify 分类数组
-     * @param goodsId  商品数组
-     * @return 结果
-     */
-    @PostMapping("/minsert_classify")
-    public Result mGetGoodsByClassify(@RequestParam String[] classify,
-                                      @RequestParam Integer[] goodsId) {
-        try {
-            classifyService.insertClassify(classify, goodsId);
-            return Result.success("添加成功！");
-        } catch (Exception e) {
-            return Result.fail(e.toString());
-        }
-    }
 
     @PostMapping("/msearch")
     public Result mSearchByKeyWord(@RequestParam String keyWord) {

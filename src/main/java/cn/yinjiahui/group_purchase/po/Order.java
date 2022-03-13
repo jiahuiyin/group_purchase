@@ -8,27 +8,34 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
-
+import java.util.List;
 
 @Data
-@TableName("shopping_cart")
-public class ShoppingCart {
+@TableName("order")
+public class Order {
+
     @TableId(type = IdType.AUTO)
     private Integer id;
+    @TableField("user_id")
+    private Integer userId;
 
-    @TableField(value = "user_id")
-    private String userId;
+    @TableField("address_id")
+    private Integer addressId;
 
-    @TableField(value = "goods_id")
-    private Integer goodsId;
+    @TableField("total_price")
+    private Integer totalPrice;
 
-    private Integer num;
+    private String goodsList;
+
+    private List<Goods> goods;
+    /**
+     * 0 待支付 1已支付 2已送达
+     */
+    private Integer status = 0;
 
     @TableField("create_time")
     private Date createTime;
 
     @TableField("update_time")
     private Date updateTime;
-
-    private Goods goodsEntity;
 }

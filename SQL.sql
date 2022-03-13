@@ -1,4 +1,4 @@
-/**
+
 商品表
 
 create table goods(
@@ -21,7 +21,7 @@ create table goods_classify(
                          unique (classify,goodsId)
 )
 
-/**购物车
+/**购物车**/
 
 create table shopping_cart(
                       id int AUTO_INCREMENT primary key,

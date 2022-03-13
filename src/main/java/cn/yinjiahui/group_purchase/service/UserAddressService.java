@@ -6,11 +6,9 @@ import cn.yinjiahui.group_purchase.po.UserAddress;
 import java.util.List;
 
 public interface UserAddressService {
-    void insert(Integer phone, Integer addressId);
+    void save(UserAddress userAddress);
 
-    void setDefault(Integer id);
-
-    List<UserAddress> selectByPhone(Integer phone);
+    List<UserAddress> selectByUId();
 
     void deleteById(Integer id);
 }

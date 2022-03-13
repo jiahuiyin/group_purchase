@@ -3,6 +3,7 @@ package cn.yinjiahui.group_purchase.service.impl;
 import cn.yinjiahui.group_purchase.mapper.ShoppingCartMapper;
 import cn.yinjiahui.group_purchase.po.ShoppingCart;
 import cn.yinjiahui.group_purchase.service.ShoppingCartService;
+import cn.yinjiahui.group_purchase.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,17 @@ import java.util.List;
 public class ShoppingCartServiceImp implements ShoppingCartService {
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
+    @Autowired
+    private UserService userService;
 
     /**
      * 返回此账号所有购物车条目
      *
-     * @param phone 手机号
      * @return 购物车类型中包括一个商品 这个会返回商品
      */
     @Override
-    public List<ShoppingCart> getMyShoppingCart(String phone) {
-        return shoppingCartMapper.getMyShoppingCart(phone);
+    public List<ShoppingCart> getMyShoppingCart() {
+        return shoppingCartMapper.getMyShoppingCart(userService.getCurrentUserId());
     }
 
     /**
@@ -33,25 +35,11 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
      */
     @Override
     public void insertShoppingCart(ShoppingCart s) {
-        ShoppingCart i = shoppingCartMapper.selectById(s.getId());
-        if (i == null) {
+        if (s.getId() == null) {
             shoppingCartMapper.insert(s);
-        } else shoppingCartMapper.addNumShoppingCart(s.getId());
+        } else {
+            shoppingCartMapper.updateById(s);
+        }
     }
 
-
-    @Override
-    public void addNum(Integer id) {
-        shoppingCartMapper.addNumShoppingCart(id);
-    }
-
-    @Override
-    public void subNum(Integer id) {
-        shoppingCartMapper.subNumShoppingCart(id);
-    }
-
-    @Override
-    public void setNum(Integer num, Integer id) {
-        shoppingCartMapper.setNumShoppingCart(num, id);
-    }
 }

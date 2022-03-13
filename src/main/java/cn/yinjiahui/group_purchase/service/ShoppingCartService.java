@@ -5,13 +5,8 @@ import cn.yinjiahui.group_purchase.po.ShoppingCart;
 import java.util.List;
 
 public interface ShoppingCartService {
-    List<ShoppingCart> getMyShoppingCart(String phone);
+    List<ShoppingCart> getMyShoppingCart();
 
     void insertShoppingCart(ShoppingCart s);
 
-    void addNum(Integer id);
-
-    void subNum(Integer id);
-
-    void setNum(Integer num, Integer id);
 }

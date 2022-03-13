@@ -20,21 +20,19 @@ public class ShoppingCartController {
     @Autowired
     ShoppingCartService shoppingCartService;
 
-    @PostMapping("/mget_my_shopping_cart")
-    public Result mGetGoods(@RequestParam String phone) {
+    @PostMapping("/get_my_shopping_cart")
+    public Result getShoppingCart() {
         try {
-            List<ShoppingCart> l = shoppingCartService.getMyShoppingCart(phone);
+            List<ShoppingCart> l = shoppingCartService.getMyShoppingCart();
             return Result.success(l);
         } catch (Exception e) {
             return Result.fail(e.toString());
         }
     }
 
-    @PostMapping("/minsert_shopping_cart")
-    public Result mGetGoods(@RequestParam String phone,
-                            @RequestParam Integer goodsNum) {
+    @PostMapping("/insert_shopping_cart")
+    public Result saveShoppingCart(@RequestParam ShoppingCart shoppingCart) {
         try {
-            ShoppingCart shoppingCart = new ShoppingCart(goodsNum, phone);
             shoppingCartService.insertShoppingCart(shoppingCart);
             return Result.success("添加成功");
         } catch (Exception e) {
@@ -42,33 +40,4 @@ public class ShoppingCartController {
         }
     }
 
-    @PostMapping("/madd_num")
-    public Result addNum(@RequestParam Integer id) {
-        try {
-            shoppingCartService.addNum(id);
-            return Result.success("添加成功");
-        } catch (Exception e) {
-            return Result.fail(e.toString());
-        }
-    }
-
-    @PostMapping("/msub_num")
-    public Result subNum(@RequestParam Integer id) {
-        try {
-            shoppingCartService.subNum(id);
-            return Result.success("添加成功");
-        } catch (Exception e) {
-            return Result.fail(e.toString());
-        }
-    }
-
-    @PostMapping("/mset_num")
-    public Result subNum(@RequestParam Integer id, @RequestParam Integer num) {
-        try {
-            shoppingCartService.setNum(num, id);
-            return Result.success("修改成功");
-        } catch (Exception e) {
-            return Result.fail(e.toString());
-        }
-    }
 }

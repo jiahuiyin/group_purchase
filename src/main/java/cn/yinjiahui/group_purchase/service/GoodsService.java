@@ -9,9 +9,11 @@ public interface GoodsService {
 
     List<Goods> mGetGoods(List<Integer> goodsIdList);
 
-    Goods mGetGoodsById(Integer id);
-
-    void mInsertNewGoods(String[] tittle, Integer[] num, float[] price);
+    void saveGoods(Goods goods);
 
     List<Goods> mGetGoodsByTitleLike(String keyWord);
+
+    List<Goods> mGetGoodsByCategory(Integer categoryId);
+
+    List<Goods> mGetGoodsByMerchant(Integer merchantId);
 }

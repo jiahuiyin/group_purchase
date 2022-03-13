@@ -16,8 +16,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/sso")
-@Api(value = "UserController")
-public class UserController {
+@Api(value = "SsoController")
+public class SsoController {
 
     @Autowired
     private UserService userService;

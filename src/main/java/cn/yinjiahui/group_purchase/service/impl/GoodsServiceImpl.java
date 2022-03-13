@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -22,28 +22,33 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Goods mGetGoodsById(Integer id) {
-        return goodsMapper.selectById(id);
-    }
-
-    @Override
-    public void mInsertNewGoods(String[] tittle, Integer[] num, float[] price) {
-        try {
-            List<Goods> goodsList = new ArrayList<>();
-            if (tittle.length != price.length || price.length != num.length) {
-                throw new Exception("数据数量不同！");
-            }
-            for (int i = 0; i < tittle.length; i++) {
-                Goods goods = new Goods(tittle[i], price[i], num[i]);
-                goodsMapper.insert(goods);
-            }
-        } catch (Exception e) {
-
+    public void saveGoods(Goods goods) {
+        if (goods.getId() == null) {
+            goodsMapper.insert(goods);
         }
+        goodsMapper.updateById(goods);
     }
 
     @Override
     public List<Goods> mGetGoodsByTitleLike(String keyWord) {
         return goodsMapper.selectGoodsByTitleLike(keyWord);
+    }
+
+    @Override
+    public List<Goods> mGetGoodsByCategory(Integer categoryId) {
+        return goodsMapper.selectByMap(new HashMap<>() {
+            {
+                put("category_id", categoryId);
+            }
+        });
+    }
+
+    @Override
+    public List<Goods> mGetGoodsByMerchant(Integer merchantId) {
+        return goodsMapper.selectByMap(new HashMap<>() {
+            {
+                put("merchant_id", merchantId);
+            }
+        });
     }
 }
