@@ -31,7 +31,7 @@ public class UserAddressController {
         return Result.success();
     }
 
-    @PostMapping("/save_user_address")
+    @PostMapping("/del_user_address")
     public Result delUserAddress(@RequestParam Integer userAddressId) {
         userAddressService.deleteById(userAddressId);
         return Result.success();

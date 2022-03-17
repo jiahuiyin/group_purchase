@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService {
     JwtTokenUtil jwtTokenUtil;
     @Autowired
     UserMapper userMapper;
-    private String avatarPath = "";
 
     private UserDetails loadUserByPhone(String phone) throws UsernameNotFoundException {
         UserInfo user = getUserByPhone(phone);

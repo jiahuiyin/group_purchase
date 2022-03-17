@@ -32,7 +32,7 @@ public class Goods {
 
     @TableField("sold_qty")
 
-    private String soldQty;
+    private Integer soldQty;
     @TableField("create_time")
     private Date createTime;
 
