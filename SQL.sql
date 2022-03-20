@@ -43,3 +43,23 @@ create table user_address
     `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间'
 );
+create table merchant
+(
+    id            int AUTO_INCREMENT primary key,
+    user_id       int       not null,
+    image         int       not null,
+    description   varchar(50),
+    phone         varchar(20),
+    `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间'
+);
+create table message_info
+(
+    id            int AUTO_INCREMENT primary key,
+    action        varchar(20)  not null,
+    content       varchar(100) not null,
+    sender        varchar(20),
+    receiver      varchar(20),
+    `create_time` timestamp    NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+);
