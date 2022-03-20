@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @TableName("order")
@@ -27,7 +26,6 @@ public class Order {
 
     private String goodsList;
 
-    private List<Goods> goods;
     /**
      * 0 待支付 1已支付 2已送达
      */

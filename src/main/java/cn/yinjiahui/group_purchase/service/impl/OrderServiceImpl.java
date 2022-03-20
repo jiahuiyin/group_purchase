@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
             String goodsStr = order.getGoodsList();
             List<Integer> goodsIds = JSON.parseArray(goodsStr).toJavaList(Integer.class);
             List<Goods> goods = goodsService.mGetGoods(goodsIds);
-            order.setGoods(goods);
+            //order.setGoods(goods);
         }
     }
 

@@ -1,6 +1,8 @@
 package cn.yinjiahui.group_purchase.service.impl;
 
+import cn.yinjiahui.group_purchase.mapper.CategoryMapper;
 import cn.yinjiahui.group_purchase.mapper.GoodsMapper;
+import cn.yinjiahui.group_purchase.po.Category;
 import cn.yinjiahui.group_purchase.po.Goods;
 import cn.yinjiahui.group_purchase.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,8 @@ import java.util.List;
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
+    @Autowired
+    CategoryMapper categoryMapper;
 
     @Override
     public List<Goods> mGetGoods(List<Integer> goodsIdList) {
@@ -50,5 +54,10 @@ public class GoodsServiceImpl implements GoodsService {
                 put("merchant_id", merchantId);
             }
         });
+    }
+
+    @Override
+    public List<Category> mGetCategory() {
+        return categoryMapper.selectList(null);
     }
 }

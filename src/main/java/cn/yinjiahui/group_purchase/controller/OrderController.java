@@ -2,6 +2,7 @@ package cn.yinjiahui.group_purchase.controller;
 
 import cn.yinjiahui.group_purchase.common.Result;
 import cn.yinjiahui.group_purchase.service.OrderService;
+import cn.yinjiahui.group_purchase.vo.OrderGoods;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,7 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public Result buy(@RequestParam Integer goodsId) {
+    public Result buy(@RequestParam OrderGoods orderGoods) {
         return null;
     }
 }

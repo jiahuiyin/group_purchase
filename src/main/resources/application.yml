@@ -1,5 +1,6 @@
 server:
   port: 8081
+  host: 127.0.0.1
 spring:
   profiles:
     active: secret
@@ -30,7 +31,20 @@ secure:
       - /files/**
 
 
+cim:
+  app:
+    port: 23456
+  websocket:
+    port: 34567
 
+
+
+apple:
+  apns:
+    debug: false
+    p12:
+      password: 123
+      file: xxx
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

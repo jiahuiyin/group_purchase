@@ -1,6 +1,7 @@
 package cn.yinjiahui.group_purchase.controller;
 
 import cn.yinjiahui.group_purchase.common.Result;
+import cn.yinjiahui.group_purchase.po.Category;
 import cn.yinjiahui.group_purchase.po.Goods;
 import cn.yinjiahui.group_purchase.service.GoodsService;
 import io.swagger.annotations.Api;
@@ -78,6 +79,17 @@ public class GoodsController {
     public Result mSearchByKeyWord(@RequestParam String keyWord) {
         try {
             List<Goods> list = goodsService.mGetGoodsByTitleLike("%" + keyWord + "%");
+            return Result.success(list);
+        } catch (Exception e) {
+            System.out.println(e);
+            return Result.fail(e.toString());
+        }
+    }
+
+    @PostMapping("/mget_category")
+    public Result mGetCategory() {
+        try {
+            List<Category> list = goodsService.mGetCategory();
             return Result.success(list);
         } catch (Exception e) {
             System.out.println(e);

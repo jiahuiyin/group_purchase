@@ -1,5 +1,6 @@
 package cn.yinjiahui.group_purchase.service;
 
+import cn.yinjiahui.group_purchase.po.Category;
 import cn.yinjiahui.group_purchase.po.Goods;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface GoodsService {
     List<Goods> mGetGoodsByCategory(Integer categoryId);
 
     List<Goods> mGetGoodsByMerchant(Integer merchantId);
+
+    List<Category> mGetCategory();
 }
