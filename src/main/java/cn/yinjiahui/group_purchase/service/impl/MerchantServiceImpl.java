@@ -5,7 +5,6 @@ import cn.yinjiahui.group_purchase.po.Merchant;
 import cn.yinjiahui.group_purchase.po.UserInfo;
 import cn.yinjiahui.group_purchase.service.MerchantService;
 import cn.yinjiahui.group_purchase.service.UserService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +40,17 @@ public class MerchantServiceImpl implements MerchantService {
             Merchant merchant = new Merchant(null, uid, image, name, description, user.getPhone(), null, null);
             return merchantMapper.insert(merchant);
         }
+    }
+
+    @Override
+    public Merchant getMerchant(Integer merchantId) {
+        return merchantMapper.selectById(merchantId);
+    }
+
+
+    @Override
+    public List<Merchant> searchMerchant(String name) {
+        return merchantMapper.searchMerchant(name);
     }
 }
 
