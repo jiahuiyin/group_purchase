@@ -11,3 +11,4 @@
 target/
 application-secret.yml
 .iml
+*.pfx
