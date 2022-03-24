@@ -17,9 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -88,14 +86,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateAvatar(MultipartFile file) throws IOException {
-//        String fileName = file.getOriginalFilename();
-//        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-//        String trueName = UUID.randomUUID() + suffixName;
-//        File dest = new File(avatarPath + trueName);
-//        file.transferTo(dest);
-//        userMapper.updateAvatar(trueName, getCurrentUserId());
+    public void updateUserInfo(UserInfo userInfo) {
+        userMapper.updateById(userInfo);
     }
-
-
 }
