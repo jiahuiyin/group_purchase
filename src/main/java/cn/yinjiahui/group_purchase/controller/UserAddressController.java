@@ -5,10 +5,7 @@ import cn.yinjiahui.group_purchase.po.UserAddress;
 import cn.yinjiahui.group_purchase.service.UserAddressService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class UserAddressController {
     }
 
     @PostMapping("/save_user_address")
-    public Result saveUserAddress(@RequestParam UserAddress userAddress) {
+    public Result saveUserAddress(@RequestBody UserAddress userAddress) {
         userAddressService.save(userAddress);
         return Result.success();
     }

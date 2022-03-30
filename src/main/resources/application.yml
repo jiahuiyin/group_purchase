@@ -3,6 +3,9 @@ server:
   port: 443
 
 spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
   profiles:
     active: secret
 

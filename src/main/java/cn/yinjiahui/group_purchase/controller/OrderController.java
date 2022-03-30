@@ -6,8 +6,8 @@ import cn.yinjiahui.group_purchase.vo.OrderGoods;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -24,7 +24,7 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public Result buy(@RequestParam OrderGoods orderGoods) {
+    public Result buy(@RequestBody OrderGoods orderGoods) {
         return null;
     }
 }

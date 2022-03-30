@@ -6,10 +6,7 @@ import cn.yinjiahui.group_purchase.po.Goods;
 import cn.yinjiahui.group_purchase.service.GoodsService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -65,7 +62,7 @@ public class GoodsController {
      * @return 结果
      */
     @PostMapping("/save_goods")
-    public Result saveGoods(@RequestParam Goods goods) {
+    public Result saveGoods(@RequestBody Goods goods) {
         try {
             goodsService.saveGoods(goods);
             return Result.success("添加成功！");
