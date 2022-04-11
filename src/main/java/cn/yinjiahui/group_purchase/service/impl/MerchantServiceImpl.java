@@ -50,6 +50,9 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public List<Merchant> searchMerchant(String name) {
+        if (name == null || name == "") {
+            return merchantMapper.selectList(null);
+        }
         return merchantMapper.searchMerchant(name);
     }
 }
