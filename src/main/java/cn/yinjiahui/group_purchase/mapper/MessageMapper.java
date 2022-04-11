@@ -1,21 +1,23 @@
 package cn.yinjiahui.group_purchase.mapper;
 
-import cn.yinjiahui.group_purchase.po.MessageInfo;
-import org.apache.ibatis.annotations.*;
+import cn.yinjiahui.group_purchase.po.Message;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 public interface MessageMapper {
 
     @Options(useGeneratedKeys = true, keyProperty = "message.id", keyColumn = "id")
-    @Insert("INSERT INTO `message` (message_action,content,sender,receiver,is_visited) " +
+    @Insert("INSERT INTO `message` (action,content,sender,receiver,is_visited) " +
             "VALUES (#{message.action},#{message.content},#{message.sender},#{message.receiver},#{visited})")
-    void addMessage(@Param("message") MessageInfo message, @Param("visited") Integer visited);
+    void addMessage(@Param("message") Message message, @Param("visited") Integer visited);
 
 
-    @Select("SELECT message_action,content,sender,receiver  FROM voa_message WHERE (sender=#{senderId} AND receiver=#{receiverId})OR (sender=#{receiverId} AND receiver=#{senderId})")
-    @Result(column = "aessage_action", property = "action")
-    List<MessageInfo> getMessage(Integer senderId, Integer receiverId);
+    @Select("SELECT action,content,sender,receiver  FROM message WHERE (sender=#{senderId} AND receiver=#{receiverId})OR (sender=#{receiverId} AND receiver=#{senderId})")
+    List<Message> getMessage(Integer senderId, Integer receiverId);
 
 
 }

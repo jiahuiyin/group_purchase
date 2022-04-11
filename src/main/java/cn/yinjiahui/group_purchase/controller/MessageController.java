@@ -5,10 +5,7 @@ import cn.yinjiahui.group_purchase.push.DefaultMessagePusher;
 import cn.yinjiahui.group_purchase.service.MessageService;
 import com.farsunset.cim.sdk.server.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +19,7 @@ public class MessageController {
     private DefaultMessagePusher defaultMessagePusher;
 
     @PostMapping(value = "/send")
-    public Result send(Message message) {
+    public Result send(@RequestBody Message message) {
         defaultMessagePusher.push(message);
         return Result.success(message.getId());
     }
