@@ -30,5 +30,4 @@ public class ShoppingCart {
     @TableField("update_time")
     private Date updateTime;
 
-    private Goods goodsEntity;
 }

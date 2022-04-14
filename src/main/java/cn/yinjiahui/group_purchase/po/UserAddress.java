@@ -17,7 +17,7 @@ public class UserAddress {
 
     private Integer user_id;
 
-    private Integer phone;
+    private String phone;
 
     private String name;
 
