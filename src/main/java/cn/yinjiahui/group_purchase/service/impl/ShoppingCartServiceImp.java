@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -37,17 +36,14 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     @Override
     public void insertShoppingCart(ShoppingCart s) {
         if (s.getId() == null) {
-            List<ShoppingCart> shoppingCarts = shoppingCartMapper.selectByMap(new HashMap<>() {
-                {
-                    put("user_id", s.getUserId());
-                    put("goods_id", s.getUserId());
-                }
-            });
+            List<ShoppingCart> shoppingCarts = shoppingCartMapper.getShoppingCart(s.getUserId(), s.getGoodsId());
+
             if (shoppingCarts.size() > 0) {
                 shoppingCarts.get(0).setNum(s.getNum() + shoppingCarts.get(0).getNum());
                 shoppingCartMapper.updateById(shoppingCarts.get(0));
+            } else {
+                shoppingCartMapper.insertOne(s);
             }
-            shoppingCartMapper.insert(s);
         } else {
             shoppingCartMapper.updateById(s);
         }

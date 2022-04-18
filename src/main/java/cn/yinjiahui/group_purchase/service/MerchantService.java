@@ -10,4 +10,6 @@ public interface MerchantService {
     Merchant getMerchant(Integer merchantId);
 
     List<Merchant> searchMerchant(String name);
+
+    List<Merchant> mget();
 }

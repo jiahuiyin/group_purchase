@@ -15,4 +15,10 @@ public interface ShoppingCartMapper extends BaseMapper<ShoppingCart> {
     })
     List<ShoppingCart> getMyShoppingCart(Integer userId);
 
+    @Select("select * from shopping_cart where user_id = #{userId} and goods_id=#{goodsId}")
+    List<ShoppingCart> getShoppingCart(String userId, Integer goodsId);
+
+    @Insert("INSERT INTO shopping_cart(user_id,goods_id,num) " +
+            "VALUES(#{userId},#{goodsId},#{num})")
+    void insertOne(ShoppingCart shoppingCart);
 }

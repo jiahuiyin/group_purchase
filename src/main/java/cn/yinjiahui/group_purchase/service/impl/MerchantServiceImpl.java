@@ -55,5 +55,10 @@ public class MerchantServiceImpl implements MerchantService {
         }
         return merchantMapper.searchMerchant(name);
     }
+
+    @Override
+    public List<Merchant> mget() {
+        return merchantMapper.selectList(null);
+    }
 }
 
