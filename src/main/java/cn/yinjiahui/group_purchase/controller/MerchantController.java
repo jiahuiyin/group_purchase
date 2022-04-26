@@ -43,4 +43,10 @@ public class MerchantController {
         List<Merchant> merchantList = merchantService.mget();
         return Result.success(merchantList);
     }
+
+    @PostMapping("/get_my_merchant")
+    public Result getMyMerchant() {
+        Merchant merchant = merchantService.getMyMerchant();
+        return Result.success(merchant);
+    }
 }

@@ -27,4 +27,10 @@ public class UserController {
         return Result.success(getUserInfo());
     }
 
+    @GetMapping("/get_user")
+    public Result getUser() {
+        return Result.success(userService.getUserById(userService.getCurrentUserId()));
+    }
+
+
 }

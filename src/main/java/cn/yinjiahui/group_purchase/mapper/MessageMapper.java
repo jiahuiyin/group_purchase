@@ -16,7 +16,7 @@ public interface MessageMapper {
     void addMessage(@Param("message") Message message, @Param("visited") Integer visited);
 
 
-    @Select("SELECT action,content,sender,receiver  FROM message WHERE (sender=#{senderId} AND receiver=#{receiverId})OR (sender=#{receiverId} AND receiver=#{senderId})")
+    @Select("SELECT action,content,sender,receiver,create_time FROM message WHERE (sender=#{senderId} AND receiver=#{receiverId})OR (sender=#{receiverId} AND receiver=#{senderId})")
     List<Message> getMessage(Integer senderId, Integer receiverId);
 
 

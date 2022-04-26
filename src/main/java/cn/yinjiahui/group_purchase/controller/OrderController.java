@@ -1,5 +1,6 @@
 package cn.yinjiahui.group_purchase.controller;
 
+import cn.yinjiahui.group_purchase.common.BaseException;
 import cn.yinjiahui.group_purchase.common.Result;
 import cn.yinjiahui.group_purchase.service.OrderService;
 import cn.yinjiahui.group_purchase.vo.OrderGoods;
@@ -25,6 +26,10 @@ public class OrderController {
 
     @PostMapping("/buy")
     public Result buy(@RequestBody OrderGoods orderGoods) {
-        return null;
+        try {
+            return Result.success(orderService.buy(orderGoods));
+        } catch (BaseException e) {
+            return Result.fail(e);
+        }
     }
 }

@@ -60,5 +60,18 @@ public class MerchantServiceImpl implements MerchantService {
     public List<Merchant> mget() {
         return merchantMapper.selectList(null);
     }
+
+    @Override
+    public Merchant getMyMerchant() {
+        List<Merchant> merchants = merchantMapper.selectByMap(new HashMap<>() {
+            {
+                put("user_id", userService.getCurrentUserId());
+            }
+        });
+        if (merchants != null & merchants.size() > 0) {
+            return merchants.get(0);
+        }
+        return null;
+    }
 }
 

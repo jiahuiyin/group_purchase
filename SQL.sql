@@ -63,3 +63,15 @@ create table message_info
     `create_time` timestamp    NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 
 );
+create table order
+(
+    id            int AUTO_INCREMENT primary key,
+    user_id       int       not null,
+    merchant_id   int       not null,
+    address_id    int,
+    goods_list    varchar(1000),
+    status        int,
+    `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+
+);

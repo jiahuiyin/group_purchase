@@ -10,7 +10,8 @@ public enum SystemErrorType implements ErrorType {
     VALIDATE_FAILED(404, "参数检验失败"),
     UNAUTHORIZED(401, "暂未登录或token已经过期"),
     FORBIDDEN(403, "没有相关权限"),
-    SYSTEM_ERROR(10001, "系统异常");
+    SYSTEM_ERROR(10001, "系统异常"),
+    NO_QTY_STOCK(10002, "库存不足");
 
     private Integer code;
 

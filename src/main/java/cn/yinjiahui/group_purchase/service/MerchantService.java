@@ -12,4 +12,6 @@ public interface MerchantService {
     List<Merchant> searchMerchant(String name);
 
     List<Merchant> mget();
+
+    Merchant getMyMerchant();
 }
