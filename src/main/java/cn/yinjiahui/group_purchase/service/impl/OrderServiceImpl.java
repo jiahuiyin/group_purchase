@@ -36,7 +36,6 @@ public class OrderServiceImpl implements OrderService {
                 put("user_id", uid);
             }
         });
-        getOrderGoods(orders);
         return orders;
     }
 
