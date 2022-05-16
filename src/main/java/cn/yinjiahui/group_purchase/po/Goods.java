@@ -24,7 +24,7 @@ public class Goods {
     private Integer merchantId;
 
 
-    private String desc;
+    private String goods_desc;
 
     private Integer price;
 
