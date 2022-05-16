@@ -23,8 +23,8 @@ public class Goods {
     @TableField("merchant_id")
     private Integer merchantId;
 
-
-    private String goods_desc;
+    @TableField("goods_desc")
+    private String goodsDesc;
 
     private Integer price;
 
