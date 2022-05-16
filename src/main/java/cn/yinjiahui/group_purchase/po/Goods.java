@@ -24,6 +24,8 @@ public class Goods {
     private Integer merchantId;
 
 
+    private String desc;
+
     private Integer price;
 
     private String image;
